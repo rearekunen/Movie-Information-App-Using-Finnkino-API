@@ -1,0 +1,85 @@
+body {
+	background-color: #69969C;
+}
+
+h1 {
+	text-align: center;
+	margin: 10px 0px 30px 0px;
+}
+
+h3,
+h4 {
+	background-color: #afd6db;
+	padding: 5px;
+	max-width: 70%;
+	border-radius: 8px;
+}
+
+h4 {
+	background-color: #cce5e8;
+	display: inline-block;
+}
+
+#dropdownLabel {
+	margin: 0px 10px 0px 10px;
+	padding: 0px 10px 0px 10px;
+	font-weight: bold;
+}
+
+.moviePortrait {
+	float: right;
+	max-width: 200px;
+	margin-left: 20px;
+	border-radius: 8px;
+}
+
+select {
+	margin: 10px;
+	padding: 10px;
+	width: 90%;
+	border-radius: 8px;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.movie {
+	background-color: #afd6db;
+	border-radius: 8px;
+	padding: 10px;
+	margin: 10px;
+	width: 90%;
+}
+
+.movie:hover {
+	background-color: #8ab0b5;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.container {
+	background-color: white;
+	padding: 10px;
+	border-radius: 8px;
+}
+
+.showing {
+	background-color: #ebf4f5;
+	padding: 5px;
+	border-radius: 8px;
+}
+
+#showingsList {
+	margin-top: 10px;
+}
+
+#movieInfo {
+	margin: 30px 20px 0px 0px;
+}
+
+#movieShowtimes {
+	margin-right: 20px;
+}
