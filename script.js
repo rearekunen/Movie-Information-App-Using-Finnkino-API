@@ -84,10 +84,9 @@ function loadMovies() {
 
             // Counting how many movies are being shown
             var count = XMLDoc.getElementsByTagName("Event");
-			console.log(count);
 
             // Preparing the list of movies shown on the sidebar of the page
-            var list = "<ul id='allMovies' style='display:none'>";
+            var list = "<ul id='allMovies'>";
 
             // Checks to see if there are no movies being shown in the theatre at the moment
             if (count.length == 0) {
@@ -136,21 +135,17 @@ function loadMovies() {
                 // Adding the movie list to the page
                 list += "</ul>";
                 $("#movieList").html(list);
-
-                // Adding a fade-in effect to the movie list
-                $(document).ready(function() {
-                    $("#allMovies").fadeIn()
-                });
             }
         }
     }
+	
 }
 
 function loadMovieInfo(id) {
     // Goes through all the movies being shown to find the selected one and adds all the information to the page
 
     var chosenMovie = id;
-    finishedInfo = "<div id='allInfo' style='display:none'>";
+    finishedInfo = "";
     for (i = 0; i < Object.keys(chosenMovies.movies).length; i++) {
         var currentID = chosenMovies.movies[i].id;
         if (currentID == chosenMovie) {
@@ -166,7 +161,6 @@ function loadMovieInfo(id) {
             finishedInfo += "<span><b>Synopsis:</b></span><p class='synopsis'>" + synopsis + "</p><br>";
         }
     }
-    finishedInfo += "</div>";
     $("#movieInfo").html(finishedInfo);
 }
 
@@ -186,7 +180,7 @@ function loadShowingTimes(id) {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             var XMLDoc = xmlhttp.responseXML;
             // Preparing the list of showtimes
-            var showings = "<div id='showingInfo' style='display:none'><h4>Showtimes</h4>";
+            var showings = "<h4>Showtimes</h4>";
 
             // Looking up how many showtimes a movie has
             var count = XMLDoc.getElementsByTagName("Show");
@@ -220,14 +214,8 @@ function loadShowingTimes(id) {
                 showings += "<li class='showing'><b>Place</b><br>" + showPlace + "<br><br><b>Date and time</b><br>" + date + ", " + startTime + " - " + endTime + "</li><br>";
             }
         }
-        showings += "</ul></div>";
+        showings += "</ul>";
         $("#movieShowtimes").html(showings);
-
-        // Adding a fade-in effect to the movie information panel
-        $(document).ready(function() {
-            $("#allInfo").fadeIn();
-            $("#showingInfo").fadeIn();
-        });
 
     }
 }
