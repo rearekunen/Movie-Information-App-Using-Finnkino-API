@@ -84,6 +84,7 @@ function loadMovies() {
 
             // Counting how many movies are being shown
             var count = XMLDoc.getElementsByTagName("Event");
+			console.log(count);
 
             // Preparing the list of movies shown on the sidebar of the page
             var list = "<ul id='allMovies' style='display:none'>";
@@ -100,6 +101,13 @@ function loadMovies() {
                 var lengths = XMLDoc.getElementsByTagName("LengthInMinutes");
                 var synopsises = XMLDoc.getElementsByTagName("ShortSynopsis");
                 var movieImages = XMLDoc.getElementsByTagName("EventMediumImagePortrait");
+				
+				// As trailer video titles also use the "Title" tag in the XML file, they need to be removed
+				for (i = 0; i < titles.length; i++) {
+					if (titles[i].childNodes[0].nodeValue == "Traileri") {
+						titles[i].parentNode.removeChild(titles[i]);
+					}
+				}
 
                 // Inserting an info text and emptying the movie list
                 resetFields();
@@ -112,6 +120,8 @@ function loadMovies() {
                     var year = years[i].childNodes[0].nodeValue;
                     var length = lengths[i].childNodes[0].nodeValue;
                     var synopsis = synopsises[i].childNodes[0].nodeValue;
+					// Remove quotation marks from the synopsis to avoid errors
+					synopsis = synopsis.replace(/"|'/g, '');
                     var movieImage = movieImages[i].childNodes[0].nodeValue;
 
                     list += "<li class='movie' onclick='loadMovieInfo(" + id + "), loadShowingTimes(" + id + ")'>" + title + "</li>";
